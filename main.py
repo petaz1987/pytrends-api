@@ -29,12 +29,21 @@ def related_topics():
     data = pytrends.related_topics()
     return jsonify(data)
 
-@app.route("/related_queries")
+@app.route('/related_queries', methods=['GET'])
 def related_queries():
-    kw = request.args.get('keyword')
-    pytrends.build_payload([kw])
-    data = pytrends.related_queries()
-    return jsonify(data)
+    keyword = request.args.get('keyword', '')
+    if not keyword:
+        return jsonify({'error': 'Missing keyword'}), 400
+    try:
+        pytrends.build_payload([keyword], cat=0, timeframe='today 12-m', geo='', gprop='')
+        data = pytrends.related_queries()
+        if not data or keyword not in data or data[keyword] is None:
+            return jsonify({'error': 'No related queries found'}), 404
+        return jsonify(data[keyword])
+    except Exception as e:
+        print(f"Error fetching related queries for '{keyword}': {e}")
+        return jsonify({'error': str(e)}), 500
+
 
 @app.route("/suggestions")
 def suggestions():
