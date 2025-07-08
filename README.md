@@ -2,21 +2,6 @@
 
 A lightweight Flask-based API wrapper over [pytrends](https://github.com/GeneralMills/pytrends), hosted on Render. Built to power AI agents with real-time topic insights.
 
-## 🔗 Live API URL
-
-```
-https://<your-subdomain>.onrender.com/
-```
-
-The root returns:
-
-```json
-{
-  "message": "Welcome to the PyTrends API for Petr Staroba.",
-  "documentation": "https://github.com/petaz1987/pytrends-api/blob/main/README.md"
-}
-```
-
 ---
 
 ## 🛠️ Available Endpoints
