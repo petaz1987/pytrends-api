@@ -1,4 +1,4 @@
-# PyTrends API for Petr Staroba
+# PyTrends API
 
 A lightweight Flask-based API wrapper over [pytrends](https://github.com/GeneralMills/pytrends), hosted on Render. Built to power AI agents with real-time topic insights.
 
